@@ -2,3 +2,79 @@
     ViewData["Title"] = "Contact Page";
 }
 
+@model IEnumerable<WebContactsOperations.Models.Contact>
+
+<button class="btn btn-primary mb-3" onclick="openCreateModal()">Добавить контакт</button>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Job</th>
+            <th>Birth date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Name</td>
+                <td>@c.MobilePhone</td>
+                <td>@c.JobTitle</td>
+                <td>@c.Birthdate.ToShortDateString()</td>
+                <td>
+                    <button class="btn btn-sm btn-warning"
+                            onclick="openEditModal(@c.Id, '@c.Name', '@c.MobilePhone', '@c.JobTitle', '@c.Birthdate.ToString("yyyy-MM-dd")')">
+                        Edit
+                    </button>
+
+                    <form asp-action="Delete" method="post" style="display:inline">
+                        <input type="hidden" name="id" value="@c.Id" />
+                        <button class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<div id="createModal" class="modal">
+    <form asp-action="Create" method="post"
+          id="createForm"
+          onsubmit="return validateContactForm('createForm')">
+
+        <input name="Name" placeholder="Name" />
+        <input name="MobilePhone" placeholder="Mobile phone" />
+        <input name="JobTitle" placeholder="Job title" />
+        <input name="BirthDate" type="date" />
+
+        <button type="submit">Save</button>
+        <button type="button" onclick="closeCreateModal()">Cancel</button>
+    </form>
+</div>
+
+
+<div id="editModal" class="modal">
+    <form asp-action="Edit" method="post"
+          id="editForm"
+          onsubmit="return validateContactForm('editForm')">
+
+        <input type="hidden" name="Id" id="editId" />
+
+        <input name="Name" id="editName" />
+        <input name="MobilePhone" id="editMobile" />
+        <input name="JobTitle" id="editJob" />
+        <input name="BirthDate" type="date" id="editBirthDate" />
+
+        <button type="submit">Update</button>
+        <button type="button" onclick="closeEditModal()">Cancel</button>
+    </form>
+</div>
+
+
+@section Scripts {
+    <script src="~/js/contact.js"></script>
+}

@@ -159,3 +159,4 @@ D:\Commits\TestTaskForSiaremProject\WebContactsOperations\bin\Debug\net8.0\runti
 D:\Commits\TestTaskForSiaremProject\WebContactsOperations\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 D:\Commits\TestTaskForSiaremProject\WebContactsOperations\obj\Debug\net8.0\WebContactsOperations.csproj.AssemblyReference.cache
 D:\Commits\TestTaskForSiaremProject\WebContactsOperations\obj\Debug\net8.0\WebConta.BA96BEB1.Up2Date
+D:\Commits\TestTaskForSiaremProject\WebContactsOperations\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
